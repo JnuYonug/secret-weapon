@@ -2,6 +2,8 @@
 {% block container %}
 
   This is Setting Page.
-  <a href="/setting/edit/fuck-you">fuck-you</a>
-
+  <a href="/setting/edit/fuck-you">fuck-you</a><br />
+  {% for data in algorithms %}
+    <a href="/setting/edit/{{ data.name }}">{{ data.name }}</a><br />
+  {% endfor %}
 {% endblock %}
