@@ -27,7 +27,7 @@ def create_users(data_store):
 data_store = app.security.datastore
 
 with app.app_context():
-    # db.drop_all()
+    db.drop_all()
     db.create_all()
 
     # create_roles(data_store)

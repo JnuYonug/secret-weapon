@@ -19,10 +19,11 @@ def display_index():
 
     return render_template("setting_index.html", algorithms=algorithms)
 
-@setting.route('/edit/<algorithm_name>')
+@setting.route('/edit/<algorithm_id>')
 @login_required
-def display_edit(algorithm_name):
-    return render_template("setting_edit_algorithm.html", algorithm=algorithm_name)
+def display_edit(algorithm_id):
+    algorithm = Algorithm.query.filter_by(id=algorithm_id).first()
+    return render_template("setting_edit_algorithm.html", algorithm=algorithm)
 
 @setting.route('/new_algorithm/', methods=['GET', 'POST'])
 def display_new_algorithm():

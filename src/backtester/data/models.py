@@ -41,7 +41,9 @@ class Algorithm(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    code = db.Column(db.UnicodeText)
 
-    def __init__(self, name, user_id):
+    def __init__(self, name, user_id, code="print ('give me code')"):
         self.name = name
         self.user_id = user_id
+        self.code = code

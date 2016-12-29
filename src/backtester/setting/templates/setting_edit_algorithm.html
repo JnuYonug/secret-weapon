@@ -1,6 +1,8 @@
 {% extends 'layout.html' %}
 {% block container %}
 
-  {{ algorithm }}
+  <h3>{{ algorithm.name }}</h3>
+
+  <textarea>{{ algorithm.code }}</textarea>
 
 {% endblock %}
