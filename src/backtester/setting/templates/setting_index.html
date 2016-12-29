@@ -1,8 +1,12 @@
 {% extends 'layout.html' %}
 {% block container %}
 
-  This is Setting Page.
-  <a href="/setting/edit/fuck-you">fuck-you</a><br />
+
+
+  <a href="{{ url_for('setting.display_new_algorithm') }}">
+    <span style="font-size: 24px;"><span class="glyphicon glyphicon-plus-sign"></span> new algorithm</style>
+  </a>
+  <br />
   {% for data in algorithms %}
     <a href="/setting/edit/{{ data.name }}">{{ data.name }}</a><br />
   {% endfor %}
