@@ -7,39 +7,44 @@
     <title>Backtester - Juno</title>
     <meta charset="utf-8">
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Bootstrap 4 alpha CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
   </head>
   <body>
+    <nav class="navbar navbar-dark bg-inverse">
+      <a class="navbar-brand" href="{{ url_for('index') }}">Backtester</a>
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a href="{{ url_for('dashboard.display_index') }}" class="nav-link">Dash board</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url_for('dashboard.display_index') }}" class="nav-link">History</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url_for('setting.display_index') }}" class="nav-link">Setting</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url_for('dashboard.display_index') }}" class="nav-link">Study</a>
+        </li>
+      </ul>
 
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="{{ url_for('index') }}">{{ _('HOME') }}</a>
-        </div>
-        <div>
-          <ul class="nav navbar-nav">
-            <li><a href="{{ url_for('dashboard.display_index') }}">Dash board</a></li>
-            <li><a href="{{ url_for('dashboard.display_index') }}">History</a></li>
-            <li><a href="{{ url_for('setting.display_index') }}">Setting</a></li>
-            <li><a href="{{ url_for('dashboard.display_index') }}">Study</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            {% if user.has_role('admin') %}
-              <li><a class="navbar-brand" href="{{ url_for('dashboard.display_index') }}">{{ _('Admin') }}</a></li>
-            {% endif %}
+      <ul class="nav navbar-nav float-xs-right" style="color: white;">
+        {% if user.has_role('admin') %}
+             <li class="nav-item"><a class="navbar-brand" href="{{ url_for('dashboard.display_index') }}">{{ _('Admin') }}</a></li>
+           {% endif %}
 
-            {% if not user.is_authenticated %}
-              <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> {{ _('Log In') }}</a></li>
-              <li><a href="/register"><span class="glyphicon glyphicon-log-in"></span> {{ _('Register') }}</a></li>
-            {% else %}
-              <li><a>Hello. {{ user.email }}</a></li>
-              <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> {{ _('Log Out') }}</a></li>
-            {% endif %}
-
-          </ul>
-        </div>
-      </div>
+           {% if not user.is_authenticated %}
+             <li class="nav-item"><a href="/login" class="nav-link">{{ _('Log In') }}</a></li>
+             <li class="nav-item"><a href="/register" class="nav-link">{{ _('Register') }}</a></li>
+           {% else %}
+             <li class="nav-item"><a class="nav-link">Hello. {{ user.email }}</a></li>
+             <li class="nav-item"><a href="/logout" class="nav-link">{{ _('Log Out') }}</a></li>
+           {% endif %}
+      </ul>
     </nav>
+
+    <div style="height:10px; width: 100%;"></div>
+
     <div class="container">
     {% with messages = get_flashed_messages() %}
       {% if messages %}
@@ -53,9 +58,8 @@
     {% block container %}{% endblock %}
     </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
   </body>
 </html>
